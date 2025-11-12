@@ -1,146 +1,203 @@
-# Optimal Urban Network Design: A\* and MST Approach for POI Connectivity
+# Optimal Urban Network Design: A* and MST Approach for Police Station Connectivity
 
-**Authors:**  
-Luisa M. G. Mathias  
-Viviane Stephane P. Novo  
+**Authors:**
 
-**Course:**  
-Algorithms and Data Structures II (DCA3702)  
-Computer Engineering – Universidade Federal do Rio Grande do Norte (UFRN)
+Luisa M. G. Mathias
+
+Viviane Stephane P. Novo
+
+This project is developed for academic purposes as part of Assignment 2, Unit 2 
+
+**Course:** Algorithms and Data Structures II (DCA3702)
+
+**Major:** Computer Engineering 
+
+**Institution:** Federal University of Rio Grande do Norte (UFRN)
 
 ---
 
 ## Objective
 
-This project aims to optimize the infrastructure layout required to connect a set of **Points of Interest (POIs)** in urban environments.
-It uses a methodology that combines two essential graph algorithms to ensure minimum total distance and complete connectivity:
-
-  * **A\* Search Algorithm** to find the shortest path between every pair of POIs along **real road network segments**.
-  * **Kruskal's Algorithm (MST)** to select the minimum total length of these paths required to connect all POIs without creating cycles.
+This project aims to optimize the infrastructure layout required to connect **Police Stations** (amenity: police) in urban environments of Northeast Brazil. Combining two essential graph algorithms to ensure
+minimum total distance and complete connectivity:
+- **A\* Search Algorithm:** to find the shortest path between every pair of police stations along **real road network segments**.
+- **Kruskal's Algorithm (MST)** to select the minimum total length of these paths required to connect all police stations without creating cycles.
 
 ---
 
 ## Problem Description
 
-The core challenge is to determine the minimum length of infrastructure (in kilometers) required to connect $N$ critical POIs within a city using its existing road network. 
-This problem is modeled as finding the **Minimum Spanning Tree (MST)** on a **complete graph** where the vertices are the POIs, and the edge weights are the shortest route distances calculated by the $\mathbf{A^*}$ algorithm.
-
-The analysis uses data from **9 Northeast Brazilian capital cities** to compare the efficiency of network optimization across different urban topologies.
+The core challenge is to determine the minimum length of infrastructure (in kilometers) required to interconnect police stations within a city using its existing road network. This problem is modeled as finding the **Minimum Spanning Tree (MST)** on a **complete graph** where the vertices are the police stations, and the edge weights are the shortest route distances calculated by the A\* algorithm. The analysis uses data from **9 Northeast Brazilian capital cities** to compare the efficiency of network optimization across different urban topologies and police station distributions. Providing a quantitative view of how efficiently distributed and connected urban security infrastructures are within various cities.
 
 ---
 
 ## Methodology and Experimental Setup
+The experiment followed a multi-step pipeline to transform geographic data into an optimized network layout. Implemented using Python and the OSMnx and NetworkX libraries.
 
-The experiment followed a multi-step pipeline to transform geographic data into an optimized network layout.
+### 🔹  Data Acquisition
 
-### 🔹 Data Generation
+- **Road Network Graphs:** The **OSMnx** library was used to download the **`'drive'`** network type (road graph) for each city. The graphs were immediately **projected to UTM**
+coordinates using `ox.project_graph` to ensure accurate distance calculation in meters/kilometers.
 
-  * **Road Network Graphs:** The **OSMnx** library was used to download the **`'drive'`** network type (road graph) for each city. The graphs were immediately **projected to UTM** coordinates using `ox.project_graph` to ensure accurate distance calculation in meters/kilometers.
-  * **POI Selection:** For the comparative analysis, **50 random POIs** (`n_pois = 50`) were selected in each city to guarantee a standard sample size for the MST calculation.
+- **POI Selection:** Police stations were identified using the ```amenity: police``` tag from OpenStreetMap. The number of stations varied naturally by city based on actual infrastructure.
+  - Their geographic coordinates (latitude, longitude) were obtained through:   ```ox.features.features_from_place(place_name, tags=tags)```
+  - Each POI was then matched to its nearest node in the street network using:  ``` ox.distance.nearest_nodes(G, X, Y)```
+ 
 
 ### 🔹 Algorithm Pipeline
 
-1.  **A\* Pathfinding:** For every pair of the 50 POIs, the shortest path was computed using the $\mathbf{A^*}$ algorithm, utilizing the **Euclidean distance** on the projected graph as the heuristic. The resulting distance (route length) was stored as the **edge weight**.
-2.  **Complete POI Graph:** A new complete graph was constructed where the 50 POIs were the vertices, and the edges were weighted by the calculated $\mathbf{A^*}$ distance between them.
-3.  **MST Calculation:** **Kruskal's Algorithm** (via NetworkX) was applied to the complete POI graph to find the MST, yielding the minimum necessary connections.
-4.  **Real Network Reconstruction:** The actual road segments (routes) corresponding to the MST edges were retrieved, and their lengths were summed to determine the **Real Total Length of the MST Network**.
+1. **A\* Pathfinding:** For every pair of police stations, the shortest path was computed using the **A*** algorithm, utilizing the **Euclidean distance** on the projected graph as the heuristic. The resulting distance (route length) was stored as the **edge weight**.
 
------
+2. **Complete Police Station Graph:** A new complete graph was constructed where police stations were the vertices, and the edges were weighted by the calculated **A*** distance between them.
+
+3. **MST Calculation:** **Kruskal's Algorithm** (via NetworkX) was applied to the complete graph to find the MST, yielding the minimum necessary connections.
+
+4. **Network Analysis:** The total length of the MST was calculated and compared across all 9 cities.
+
+---
 
 ## Experimental Configuration
-
 | Parameter | Value |
 | :--- | :--- |
-| **Cities Compared** | 9 Northeast Capitals (e.g., Natal, Recife, Salvador) |
-| **Network Type** | `'drive'` (directed multi-graph) |
-| **Number of POIs** | 50 (Randomly sampled) |
+| **Cities Compared** | 9 Northeast Capitals |
+| **POI Type** | Police Stations (`amenity: police`) |
+| **Network Type** | `'drive'` |
 | **Graph Projection** | UTM (for metric accuracy) |
-| **Shortest Path** | $\text{A}^{*}$ using $\mathbf{length}$ as weight |
-| **Heuristic** | Euclidean / Great-Circle distance (admissible) |
+| **Pathfinding Algorithm** | **A*** using `length` as weight |
+| **Heuristic** | Euclidean distance (admissible and consistent) |
 | **Spanning Tree** | **Minimum Spanning Tree (MST)** using Kruskal's algorithm |
-| **Libraries** | OSMnx, NetworkX, Pandas, Matplotlib |
+| **Analysis Libraries** | OSMnx, NetworkX, Pandas, Matplotlib |
 
------
+---
 
 ## Experimental Results
 
-The table below consolidates the key metrics from the analysis of 9 major cities, all using **50 randomly selected POIs**.
+The table below consolidates the key metrics from the analysis of police station connectivity
+across 9 major cities.
 
-| Cidade | N POIs | N. Arestas MST | Comprimento MST (km) | Comprimento Real (km) | Média km/POI |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Maceió | 50 | 49 | 115.70 | 103.58 | 2.314 |
-| Salvador | 50 | 49 | 131.82 | 99.02 | 2.636 |
-| Fortaleza | 50 | 49 | 116.39 | 90.78 | 2.327 |
-| São Luís | 50 | 49 | 129.62 | 99.87 | 2.592 |
-| João Pessoa | 50 | 49 | 83.65 | 67.99 | 1.673 |
-| Recife | 50 | 49 | 101.15 | 79.87 | 2.023 |
-| Teresina | 50 | 49 | 169.33 | 147.84 | 3.387 |
-| **Natal** | **50** | **49** | **80.76** | **64.55** | **1.615** |
-| Aracaju | 50 | 49 | 78.74 | 59.59 | 1.575 |
+| City | Total MST (km) | Police Stations | Unique Nodes | MST Edges | Avg per Edge (km) |
+Avg per Station (km) |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Maceió | 75.38 | 27 | 27 | 26 | 2.90 | 2.79 |
+| Salvador | 139.08 | 83 | 66 | 65 | 2.14 | 1.68 |
+| Fortaleza | 132.12 | 79 | 74 | 73 | 1.81 | 1.67 |
+| São Luís | 111.57 | 41 | 39 | 38 | 2.94 | 2.72 |
+| João Pessoa | 52.29 | 25 | 23 | 22 | 2.38 | 2.09 |
+| Recife | 74.51 | 57 | 52 | 51 | 1.46 | 1.31 |
+| Teresina | 101.11 | 38 | 35 | 34 | 2.97 | 2.66 |
+| **Natal** | **74.81** | **100** | **70** | **69** | **1.08** | **0.75** |
+| Aracaju | 64.90 | 36 | 36 | 34 | 1.91 | 1.80 |
 
------
-
-## Visualization
-
-The final visualization for each city shows the base road network (gray) with the optimized infrastructure layout (red), which is the union of the $\text{A}^{*}$ routes selected by the MST.
+**Key Statistics:**
+* **Total MST across all cities:** 826.77 km
+* **Average per city:** 91.86 km
+* **Most efficient:** Natal (0.75 km per station)
+* **Least efficient:** Teresina (2.66 km per station)
 
 ---
 
 ## Results Analysis
+The comparative analysis reveals distinct patterns of spatial efficiency in police stations
+distribution, reflecting local **urban topology and public security planning**.
 
-The comparative analysis reveals distinct patterns of spatial efficiency, reflecting local **urban topology and planning**.
 
-  - **Highest Required Length (Teresina):** **Teresina** shows the largest total length and the highest **Mean km/POI** ($\approx 3.39 \text{ km/POI}$). This suggests the POIs are more dispersed,
-    partly due to the city's **inland position** and the **Rio Parnaíba acting as a geographic barrier**, necessitating longer A\* routes for connectivity.
-  - **Moderate Lengths (Salvador, São Luís):** **Salvador** and **São Luís** also exhibit high averages ($\approx 2.6 \text{ km/POI}$) due to **large territorial extension** and factors like
-  - **hilly topography** (Salvador) or **linear development** along the coast. **Lowest Required Length (Natal, Aracaju, João Pessoa):** Cities like **Natal**, **Aracaju**, and **João Pessoa** have
-    the lowest Mean $\text{km/POI}$ ($\approx 1.6 \text{ km/POI}$). This implies a **denser, more compact road network** in their central areas, facilitating shorter $\text{A}^*$ paths between randomly distributed POIs.
+### Efficiency Highlights
 
-### Limitations of the $\text{A}^* + \text{MST}$ Method
+- **Natal demonstrates exceptional efficiency:** Despite having the largest number of police stations (100), it achieves the lowest average distance per station (0.75 km). This indicates excellent spatial distribution and urban planning for public security infrastructure.
 
-The $\text{A}^* + \text{MST}$ approach provides a **static, minimum-cost blueprint for connectivity**. However, it has key limitations:
+- **Recife shows strong performance:** With 57 stations connected by only 74.51 km, Recife maintains a low average of 1.31 km per station, suggesting dense coverage and efficient road connectivity.
 
-  * It ignores **dynamic variables** like traffic, rush hours, average speed, and one-way restrictions that affect real travel time.
-  * The resulting network only guarantees the minimal infrastructure base required to link the POIs; **it does not guarantee the globally most efficient sequential route**
-    for visiting all 50 POIs (which is the classic **Traveling Salesman Problem - TSP**).
+- **Salvador faces scalability challenges:** While having 83 stations, Salvador requires the longest total infrastructure (139.08 km), though its per-station average (1.68 km) remains reasonable, indicating good individual station placement despite the city's large area.
+
+
+### Geographic and Urban Factors
+
+- **Coastal compact cities** (Natal, Recife, João Pessoa) generally show better efficiency due to denser urban fabric and more concentrated development patterns.
+
+- **Inland and geographically constrained cities** (Teresina, São Luís) exhibit higher averages per station, potentially due to:
+
+- River barriers (Rio Parnaíba in Teresina)
+
+- More dispersed urban development
+
+- Topographical challenges
+
+- **Large metropolitan areas** (Salvador, Fortaleza) demonstrate the trade-off between comprehensive coverage and infrastructure costs, with higher total distances but reasonable per-station efficiency.
+
+
+### Public Security Implications
+
+- Cities with **average distance > 2.5 km per station** (Teresina, São Luís, Maceió) may benefit from the strategic placement of additional stations or infrastructure improvements to reduce response times.
+
+- The **Natal model** (high station count with low connection costs) could serve as a benchmark for urban security planning in other cities.
 
 ---
 
-## How to Run
+##  Methodological Considerations
+
+### Strengths of the A* + MST Approach
+
+- **Real-world accuracy:** Uses actual road networks rather than straight-line distances
+
+- **Optimality guarantees:** A* with Euclidean heuristic ensures shortest paths; MST
+provides minimum connecting infrastructure
+
+- **Scalability:** The method efficiently handles cities with up to 100 police stations
+
+- **Comparative framework:** Enables objective comparison across different urban contexts
+
+### Limitations and Future Work
+
+- **Static analysis:** Does not account for dynamic factors like traffic patterns, time of day, or
+road conditions
+
+- **Single criterion optimization:** Focuses solely on distance minimization, while real-world security planning may prioritize other factors (response time, population density, crime rates)
+
+- **Data quality dependence:** Relies on OpenStreetMap completeness and accuracy for
+both road networks and police station locations
+
+- **Network resilience:** MST provides minimal connectivity but offers no redundancy; real security networks may require more robust topologies
+
+---
+
+## How to Reproduce
 
 ```bash
-# Clone the repository
-git clone https://github.com/SEU-USUARIO/astar-mst-urban-optimization.git
-cd astar-mst-urban-optimization
+# Install dependencies
+pip install osmnx networkx pandas matplotlib numpy scipy tqdm
+# Run the analysis
+python police_station_analysis.py
+```
 
-# (Optional) Create and activate a virtual environment
-# python -m venv venv
-# source venv/bin/activate      # Linux/Mac
-# venv\Scripts\activate         # Windows
+### Code Structure
 
-# Install dependencies (requires osmnx, networkx, pandas, matplotlib)
-pip install osmnx networkx pandas matplotlib
-
-# Run the notebook with the full analysis
-jupyter notebook U2\ -\ A_\ +\ MST.ipynb
+```
+project/
+├── police_station_analysis.py # Main analysis script
+├── results/
+│ ├── comparative_analysis.csv
+│ └── graphs/
+│ ├── mst_maceio.png
+│ ├── mst_salvador.png
+│ └── ...
+└── README.md
 ```
 
 ---
 
-## Video Presentation
-
-[ **Watch the project demonstration video**]( )  
+## 🎥 Video Presentation
+[**Watch the project demonstration video**]([])
 
 ---
 
 ## References
-
-- Notebook-base I: [week07/Astar.ipnyb](https://github.com/ivanovitchm/datastructure/blob/main/lessons/week07/Astar.ipynb)
-- Notebook-base II: [week08/kruskal_natal.ipynb](https://github.com/ivanovitchm/datastructure/blob/main/lessons/week08/kruskal_natal.ipynb)
-- 
+- Notebook-based I:
+[week07/Astar.ipynb](https://github.com/ivanovitchm/datastructure/blob/main/lessons/week07
+/Astar.ipynb)
+- Notebook-based II:
+[week08/kruskal_natal.ipynb](https://github.com/ivanovitchm/datastructure/blob/main/lessons
+/week08/kruskal_natal.ipynb)
+- OSMnx Documentation: https://osmnx.readthedocs.io/
+- NetworkX Documentation: https://networkx.org/
 
 ---
-
-
-
-
