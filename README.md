@@ -36,10 +36,10 @@ The experiment followed a multi-step pipeline to transform geographic data into 
 
 ### 🔹  Data Acquisition
 
-- **Road Network Graphs:** The **OSMnx** library was used to download the **`'drive'`** network type (road graph) for each city. The graphs were immediately **projected to UTM**
+* **Road Network Graphs:** The **OSMnx** library was used to download the **`'drive'`** network type (road graph) for each city. The graphs were immediately **projected to UTM**
 coordinates using `ox.project_graph` to ensure accurate distance calculation in meters/kilometers.
 
-- **POI Selection:** Police stations were identified using the ```amenity: police``` tag from OpenStreetMap. The number of stations varied naturally by city based on actual infrastructure.
+* **POI Selection:** Police stations were identified using the ```amenity: police``` tag from OpenStreetMap. The number of stations varied naturally by city based on actual infrastructure.
   - Their geographic coordinates (latitude, longitude) were obtained through:   ```ox.features.features_from_place(place_name, tags=tags)```
   - Each POI was then matched to its nearest node in the street network using:  ``` ox.distance.nearest_nodes(G, X, Y)```
  
@@ -87,18 +87,18 @@ across 9 major cities.
 | **Natal** | **74.81** | **100** | **70** | **69** | **1.08** | **0.75** |
 | Aracaju | 64.90 | 36 | 36 | 34 | 1.91 | 1.80 |
 
-**Key Statistics:**
-* **Total MST across all cities:** 826.77 km
-* **Average per city:** 91.86 km
-* **Most efficient:** Natal (0.75 km per station)
-* **Least efficient:** Teresina (2.66 km per station)
+🔹**Key Statistics:**
+    * **Total MST across all cities:** 826.77 km
+    * **Average per city:** 91.86 km
+    * **Most efficient:** Natal (0.75 km per station)
+    * **Least efficient:** Teresina (2.66 km per station)
 
 ---
 
 ## Results Analysis
 The comparative analysis reveals distinct patterns of spatial efficiency in police stations distribution, reflecting local urban topology and public security planning.
 
-### Efficiency Highlights
+###🔹Efficiency Highlights
 
 - **Natal demonstrates exceptional efficiency:** Despite having the largest number of police stations (100), it achieves the lowest average distance per station (0.75 km). This indicates excellent spatial distribution and urban planning for public security infrastructure.
 
@@ -107,7 +107,7 @@ The comparative analysis reveals distinct patterns of spatial efficiency in poli
 - **Salvador faces scalability challenges:** While having 83 stations, Salvador requires the longest total infrastructure (139.08 km). However, its average per-station (1.68 km) remains reasonable, indicating good individual station placement despite the city's large area.
 
 
-### Geographic and Urban Factors
+###🔹Geographic and Urban Factors
 
 - **Coastal compact cities** (Natal, Recife, João Pessoa) generally show better efficiency due to denser urban fabric and more concentrated development patterns.
 
@@ -122,7 +122,7 @@ The comparative analysis reveals distinct patterns of spatial efficiency in poli
 - **Large metropolitan areas** (Salvador, Fortaleza) demonstrate the trade-off between comprehensive coverage and infrastructure costs, with higher total distances but reasonable per-station efficiency.
 
 
-### Public Security Implications
+###🔹Public Security Implications
 
 - Cities with **average distance > 2.5 km per station** (Teresina, São Luís, Maceió) may benefit from the strategic placement of additional stations or infrastructure improvements to reduce response times.
 
@@ -132,26 +132,23 @@ The comparative analysis reveals distinct patterns of spatial efficiency in poli
 
 ##  Methodological Considerations
 
-### Strengths of the A* + MST Approach
+###🔹Strengths of the A* + MST Approach
 
 - **Real-world accuracy:** Uses actual road networks rather than straight-line distances
 
-- **Optimality guarantees:** A* with Euclidean heuristic ensures shortest paths; MST
-provides minimum connecting infrastructure
+- **Optimality guarantees:** A* with Euclidean heuristic ensures shortest paths; MST provides minimum connecting infrastructure
 
 - **Scalability:** The method efficiently handles cities with up to 100 police stations
 
 - **Comparative framework:** Enables objective comparison across different urban contexts
 
-### Limitations and Future Work
+###🔹Limitations and Future Work
 
-- **Static analysis:** Does not account for dynamic factors like traffic patterns, time of day, or
-road conditions
+- **Static analysis:** Does not account for dynamic factors like traffic patterns, time of day, or road conditions
 
 - **Single criterion optimization:** Focuses solely on distance minimization, while real-world security planning may prioritize other factors (response time, population density, crime rates)
 
-- **Data quality dependence:** Relies on OpenStreetMap completeness and accuracy for
-both road networks and police station locations
+- **Data quality dependence:** Relies on OpenStreetMap completeness and accuracy for both road networks and police station locations
 
 - **Network resilience:** MST provides minimal connectivity but offers no redundancy; real security networks may require more robust topologies
 
