@@ -36,23 +36,23 @@ The experiment followed a multi-step pipeline to transform geographic data into 
 
 ### 🔹  Data Acquisition
 
-* **Road Network Graphs:** The **OSMnx** library was used to download the **`'drive'`** network type (road graph) for each city. The graphs were immediately **projected to UTM**
-coordinates using `ox.project_graph` to ensure accurate distance calculation in meters/kilometers.
-
-* **POI Selection:** Police stations were identified using the ```amenity: police``` tag from OpenStreetMap. The number of stations varied naturally by city based on actual infrastructure.
-  - Their geographic coordinates (latitude, longitude) were obtained through:   ```ox.features.features_from_place(place_name, tags=tags)```
-  - Each POI was then matched to its nearest node in the street network using:  ``` ox.distance.nearest_nodes(G, X, Y)```
+  * **Road Network Graphs:** The **OSMnx** library was used to download the **`'drive'`** network type (road graph) for each city. The graphs were immediately **projected to UTM**
+  coordinates using `ox.project_graph` to ensure accurate distance calculation in meters/kilometers.
+  
+  * **POI Selection:** Police stations were identified using the ```amenity: police``` tag from OpenStreetMap. The number of stations varied naturally by city based on actual infrastructure.
+    - Their geographic coordinates (latitude, longitude) were obtained through:   ```ox.features.features_from_place(place_name, tags=tags)```
+    - Each POI was then matched to its nearest node in the street network using:  ``` ox.distance.nearest_nodes(G, X, Y)```
  
 
 ### 🔹 Algorithm Pipeline
 
-1. **A\* Pathfinding:** For every pair of police stations, the shortest path was computed using the **A*** algorithm, utilizing the **Euclidean distance** on the projected graph as the heuristic. The resulting distance (route length) was stored as the **edge weight**.
-
-2. **Complete Police Station Graph:** A new complete graph was constructed where police stations were the vertices, and the edges were weighted by the calculated **A*** distance between them.
-
-3. **MST Calculation:** **Kruskal's Algorithm** (via NetworkX) was applied to the complete graph to find the MST, yielding the minimum necessary connections.
-
-4. **Network Analysis:** The total length of the MST was calculated and compared across all 9 cities.
+  1. **A\* Pathfinding:** For every pair of police stations, the shortest path was computed using the **A*** algorithm, utilizing the **Euclidean distance** on the projected graph as the heuristic. The resulting distance (route length) was stored as the **edge weight**.
+  
+  2. **Complete Police Station Graph:** A new complete graph was constructed where police stations were the vertices, and the edges were weighted by the calculated **A*** distance between them.
+  
+  3. **MST Calculation:** **Kruskal's Algorithm** (via NetworkX) was applied to the complete graph to find the MST, yielding the minimum necessary connections.
+  
+  4. **Network Analysis:** The total length of the MST was calculated and compared across all 9 cities.
 
 ---
 
