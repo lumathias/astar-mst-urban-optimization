@@ -99,34 +99,34 @@ across 9 major cities.
 The comparative analysis reveals distinct patterns of spatial efficiency in police stations distribution, reflecting local urban topology and public security planning.
 
 ###🔹Efficiency Highlights
-
-- **Natal demonstrates exceptional efficiency:** Despite having the largest number of police stations (100), it achieves the lowest average distance per station (0.75 km). This indicates excellent spatial distribution and urban planning for public security infrastructure.
-
-- **Recife shows strong performance:** With 57 stations connected by only 74.51 km, Recife maintains a low average of 1.31 km per station, suggesting dense coverage and efficient road connectivity.
-
-- **Salvador faces scalability challenges:** While having 83 stations, Salvador requires the longest total infrastructure (139.08 km). However, its average per-station (1.68 km) remains reasonable, indicating good individual station placement despite the city's large area.
+  
+  - **Natal demonstrates exceptional efficiency:** Despite having the largest number of police stations (100), it achieves the lowest average distance per station (0.75 km). This indicates excellent spatial distribution and urban planning for public security infrastructure.
+  
+  - **Recife shows strong performance:** With 57 stations connected by only 74.51 km, Recife maintains a low average of 1.31 km per station, suggesting dense coverage and efficient road connectivity.
+  
+  - **Salvador faces scalability challenges:** While having 83 stations, Salvador requires the longest total infrastructure (139.08 km). However, its average per-station (1.68 km) remains reasonable, indicating good individual station placement despite the city's large area.
 
 
 ###🔹Geographic and Urban Factors
 
-- **Coastal compact cities** (Natal, Recife, João Pessoa) generally show better efficiency due to denser urban fabric and more concentrated development patterns.
-
-- **Inland and geographically constrained cities** (Teresina, São Luís) exhibit higher averages per station, potentially due to:
-
-- River barriers (Rio Parnaíba in Teresina)
-
-- More dispersed urban development
-
-- Topographical challenges
-
-- **Large metropolitan areas** (Salvador, Fortaleza) demonstrate the trade-off between comprehensive coverage and infrastructure costs, with higher total distances but reasonable per-station efficiency.
+  - **Coastal compact cities** (Natal, Recife, João Pessoa) generally show better efficiency due to denser urban fabric and more concentrated development patterns.
+  
+  - **Inland and geographically constrained cities** (Teresina, São Luís) exhibit higher averages per station, potentially due to:
+  
+  - River barriers (Rio Parnaíba in Teresina)
+  
+  - More dispersed urban development
+  
+  - Topographical challenges
+  
+  - **Large metropolitan areas** (Salvador, Fortaleza) demonstrate the trade-off between comprehensive coverage and infrastructure costs, with higher total distances but reasonable per-station efficiency.
 
 
 ###🔹Public Security Implications
 
-- Cities with **average distance > 2.5 km per station** (Teresina, São Luís, Maceió) may benefit from the strategic placement of additional stations or infrastructure improvements to reduce response times.
-
-- The **Natal model** (high station count with low connection costs) could serve as a benchmark for urban security planning in other cities.
+  - Cities with **average distance > 2.5 km per station** (Teresina, São Luís, Maceió) may benefit from the strategic placement of additional stations or infrastructure improvements to reduce response times.
+  
+  - The **Natal model** (high station count with low connection costs) could serve as a benchmark for urban security planning in other cities.
 
 ---
 
@@ -134,23 +134,23 @@ The comparative analysis reveals distinct patterns of spatial efficiency in poli
 
 ###🔹Strengths of the A* + MST Approach
 
-- **Real-world accuracy:** Uses actual road networks rather than straight-line distances
-
-- **Optimality guarantees:** A* with Euclidean heuristic ensures shortest paths; MST provides minimum connecting infrastructure
-
-- **Scalability:** The method efficiently handles cities with up to 100 police stations
-
-- **Comparative framework:** Enables objective comparison across different urban contexts
+  - **Real-world accuracy:** Uses actual road networks rather than straight-line distances
+  
+  - **Optimality guarantees:** A* with Euclidean heuristic ensures shortest paths; MST provides minimum connecting infrastructure
+  
+  - **Scalability:** The method efficiently handles cities with up to 100 police stations
+  
+  - **Comparative framework:** Enables objective comparison across different urban contexts
 
 ###🔹Limitations and Future Work
 
-- **Static analysis:** Does not account for dynamic factors like traffic patterns, time of day, or road conditions
-
-- **Single criterion optimization:** Focuses solely on distance minimization, while real-world security planning may prioritize other factors (response time, population density, crime rates)
-
-- **Data quality dependence:** Relies on OpenStreetMap completeness and accuracy for both road networks and police station locations
-
-- **Network resilience:** MST provides minimal connectivity but offers no redundancy; real security networks may require more robust topologies
+  - **Static analysis:** Does not account for dynamic factors like traffic patterns, time of day, or road conditions
+  
+  - **Single criterion optimization:** Focuses solely on distance minimization, while real-world security planning may prioritize other factors (response time, population density, crime rates)
+  
+  - **Data quality dependence:** Relies on OpenStreetMap completeness and accuracy for both road networks and police station locations
+  
+  - **Network resilience:** MST provides minimal connectivity but offers no redundancy; real security networks may require more robust topologies
 
 ---
 
