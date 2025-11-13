@@ -20,8 +20,8 @@ This project is developed for academic purposes as part of Assignment 2, Unit 2
 
 This project aims to optimize the infrastructure layout required to connect **Police Stations** (amenity: police) in urban environments of Northeast Brazil. Combining two essential graph algorithms to ensure
 minimum total distance and complete connectivity:
-- **A\* Search Algorithm:** to find the shortest path between every pair of police stations along **real road network segments**.
-- **Kruskal's Algorithm (MST)** to select the minimum total length of these paths required to connect all police stations without creating cycles.
+ * **A\* Search Algorithm:** to find the shortest path between every pair of police stations along **real road network segments**.
+ * **Kruskal's Algorithm (MST)** to select the minimum total length of these paths required to connect all police stations without creating cycles.
 
 ---
 
@@ -88,10 +88,14 @@ across 9 major cities.
 | Aracaju | 64.90 | 36 | 36 | 34 | 1.91 | 1.80 |
 
 🔹**Key Statistics:**
-    * **Total MST across all cities:** 826.77 km
-    * **Average per city:** 91.86 km
-    * **Most efficient:** Natal (0.75 km per station)
-    * **Least efficient:** Teresina (2.66 km per station)
+   
+   *  **Total MST across all cities:** 826.77 km
+   
+   *  **Average per city:** 91.86 km
+   
+   *  **Most efficient:** Natal (0.75 km per station)
+   
+   *  **Least efficient:** Teresina (2.66 km per station)
 
 ---
 
