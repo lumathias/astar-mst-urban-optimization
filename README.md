@@ -75,8 +75,7 @@ coordinates using `ox.project_graph` to ensure accurate distance calculation in 
 The table below consolidates the key metrics from the analysis of police station connectivity
 across 9 major cities.
 
-| City | Total MST (km) | Police Stations | Unique Nodes | MST Edges | Avg per Edge (km) |
-Avg per Station (km) |
+| City | Total MST (km) | Police Stations | Unique Nodes | MST Edges | Avg per Edge (km) | Avg per Station (km) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Maceió | 75.38 | 27 | 27 | 26 | 2.90 | 2.79 |
 | Salvador | 139.08 | 83 | 66 | 65 | 2.14 | 1.68 |
@@ -97,9 +96,7 @@ Avg per Station (km) |
 ---
 
 ## Results Analysis
-The comparative analysis reveals distinct patterns of spatial efficiency in police stations
-distribution, reflecting local **urban topology and public security planning**.
-
+The comparative analysis reveals distinct patterns of spatial efficiency in police stations distribution, reflecting local urban topology and public security planning.
 
 ### Efficiency Highlights
 
@@ -107,7 +104,7 @@ distribution, reflecting local **urban topology and public security planning**.
 
 - **Recife shows strong performance:** With 57 stations connected by only 74.51 km, Recife maintains a low average of 1.31 km per station, suggesting dense coverage and efficient road connectivity.
 
-- **Salvador faces scalability challenges:** While having 83 stations, Salvador requires the longest total infrastructure (139.08 km), though its per-station average (1.68 km) remains reasonable, indicating good individual station placement despite the city's large area.
+- **Salvador faces scalability challenges:** While having 83 stations, Salvador requires the longest total infrastructure (139.08 km). However, its average per-station (1.68 km) remains reasonable, indicating good individual station placement despite the city's large area.
 
 
 ### Geographic and Urban Factors
