@@ -102,7 +102,7 @@ across 9 major cities.
 ## Results Analysis
 The comparative analysis reveals distinct patterns of spatial efficiency in police stations distribution, reflecting local urban topology and public security planning.
 
-###🔹Efficiency Highlights
+### 🔹  Efficiency Highlights
   
   - **Natal demonstrates exceptional efficiency:** Despite having the largest number of police stations (100), it achieves the lowest average distance per station (0.75 km). This indicates excellent spatial distribution and urban planning for public security infrastructure.
   
@@ -111,7 +111,7 @@ The comparative analysis reveals distinct patterns of spatial efficiency in poli
   - **Salvador faces scalability challenges:** While having 83 stations, Salvador requires the longest total infrastructure (139.08 km). However, its average per-station (1.68 km) remains reasonable, indicating good individual station placement despite the city's large area.
 
 
-###🔹Geographic and Urban Factors
+### 🔹  Geographic and Urban Factors
 
   - **Coastal compact cities** (Natal, Recife, João Pessoa) generally show better efficiency due to denser urban fabric and more concentrated development patterns.
   
@@ -126,7 +126,7 @@ The comparative analysis reveals distinct patterns of spatial efficiency in poli
   - **Large metropolitan areas** (Salvador, Fortaleza) demonstrate the trade-off between comprehensive coverage and infrastructure costs, with higher total distances but reasonable per-station efficiency.
 
 
-###🔹Public Security Implications
+### 🔹  Public Security Implications
 
   - Cities with **average distance > 2.5 km per station** (Teresina, São Luís, Maceió) may benefit from the strategic placement of additional stations or infrastructure improvements to reduce response times.
   
@@ -136,7 +136,7 @@ The comparative analysis reveals distinct patterns of spatial efficiency in poli
 
 ##  Methodological Considerations
 
-###🔹Strengths of the A* + MST Approach
+### 🔹  Strengths of the A* + MST Approach
 
   - **Real-world accuracy:** Uses actual road networks rather than straight-line distances
   
@@ -146,7 +146,7 @@ The comparative analysis reveals distinct patterns of spatial efficiency in poli
   
   - **Comparative framework:** Enables objective comparison across different urban contexts
 
-###🔹Limitations and Future Work
+### 🔹  Limitations and Future Work
 
   - **Static analysis:** Does not account for dynamic factors like traffic patterns, time of day, or road conditions
   
