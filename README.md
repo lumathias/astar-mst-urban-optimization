@@ -1,4 +1,4 @@
-# Optimal Urban Network Design: A* and MST Approach for Police Station Connectivity
+# MST analysis for police station connectivity using A* algorithm
 
 **Authors:**
 
@@ -96,22 +96,22 @@ across 9 major cities.
 ---
 
 ## Results Analysis
-The comparative analysis reveals distinct patterns of spatial efficiency in police stations distribution, reflecting local urban topology and public security planning.
+The comparative analysis reveals distinct patterns of spatial efficiency in police stations distribution, reflecting local urban topology and public security planning. The images can be seen ![here](https://github.com/lumathias/astar-mst-urban-optimization/issues/1#issue-3627596341)
 
 ### 🔹  Efficiency Highlights
   
-  - **Natal demonstrates exceptional efficiency:** Despite having the largest number of police stations (100), it achieves the lowest average distance per station (0.75 km). This indicates excellent spatial distribution and urban planning for public security infrastructure.
+  - **![Natal](https://github.com/lumathias/astar-mst-urban-optimization/issues/1#issuecomment-3535178653) demonstrates exceptional efficiency:** Despite having the largest number of police stations (100), it achieves the lowest average distance per station (0.75 km). This indicates excellent spatial distribution and urban planning for public security infrastructure.
   
-  - **Recife shows strong performance:** With 57 stations connected by only 74.51 km, Recife maintains a low average of 1.31 km per station, suggesting dense coverage and efficient road connectivity.
+  - **![Recife](https://github.com/lumathias/astar-mst-urban-optimization/issues/1#issuecomment-3535192083) shows strong performance:** With 57 stations connected by only 74.51 km, Recife maintains a low average of 1.31 km per station, suggesting dense coverage and efficient road connectivity.
   
-  - **Salvador faces scalability challenges:** While having 83 stations, Salvador requires the longest total infrastructure (139.08 km). However, its average per-station (1.68 km) remains reasonable, indicating good individual station placement despite the city's large area.
+  - **![Salvador](https://github.com/lumathias/astar-mst-urban-optimization/issues/1#issuecomment-3535193103) faces scalability challenges:** While having 83 stations, Salvador requires the longest total infrastructure (139.08 km). However, its average per-station (1.68 km) remains reasonable, indicating good individual station placement despite the city's large area.
 
 
 ### 🔹  Geographic and Urban Factors
 
-  - **Coastal compact cities** (Natal, Recife, João Pessoa) generally show better efficiency due to denser urban fabric and more concentrated development patterns.
+  - **Coastal compact cities** (Natal, Recife, ![João Pessoa](https://github.com/lumathias/astar-mst-urban-optimization/issues/1#issuecomment-3535249812)) generally show better efficiency due to denser urban fabric and more concentrated development patterns.
   
-  - **Inland and geographically constrained cities** (Teresina, São Luís) exhibit higher averages per station, potentially due to:
+  - **Inland and geographically constrained cities** (![Teresina](https://github.com/lumathias/astar-mst-urban-optimization/issues/1#issuecomment-3535205507), ![São Luís](https://github.com/lumathias/astar-mst-urban-optimization/issues/1#issuecomment-3535204568)) exhibit higher averages per station, potentially due to:
   
   - River barriers (Rio Parnaíba in Teresina)
   
@@ -119,12 +119,12 @@ The comparative analysis reveals distinct patterns of spatial efficiency in poli
   
   - Topographical challenges
   
-  - **Large metropolitan areas** (Salvador, Fortaleza) demonstrate the trade-off between comprehensive coverage and infrastructure costs, with higher total distances but reasonable per-station efficiency.
+  - **Large metropolitan areas** (Salvador, ![Fortaleza](https://github.com/lumathias/astar-mst-urban-optimization/issues/1#issuecomment-3535173242)) demonstrate the trade-off between comprehensive coverage and infrastructure costs, with higher total distances but reasonable per-station efficiency.
 
 
 ### 🔹  Public Security Implications
 
-  - Cities with **average distance > 2.5 km per station** (Teresina, São Luís, Maceió) may benefit from the strategic placement of additional stations or infrastructure improvements to reduce response times.
+  - Cities with **average distance > 2.5 km per station** (Teresina, São Luís, ![Maceió](https://github.com/lumathias/astar-mst-urban-optimization/issues/1#issuecomment-3535173242)) may benefit from the strategic placement of additional stations or infrastructure improvements to reduce response times.
   
   - The **Natal model** (high station count with low connection costs) could serve as a benchmark for urban security planning in other cities.
 
