@@ -96,7 +96,7 @@ across 9 major cities.
 ---
 
 ## Results Analysis
-The comparative analysis reveals distinct patterns of spatial efficiency in police stations distribution, reflecting local urban topology and public security planning. The images can be seen ![here](https://github.com/lumathias/astar-mst-urban-optimization/issues/1#issue-3627596341)
+The comparative analysis reveals distinct patterns of spatial efficiency in police stations distribution, reflecting local urban topology and public security planning. All the images can be seen ![here!](https://github.com/lumathias/astar-mst-urban-optimization/issues/1#issue-3627596341)
 
 ### 🔹  Efficiency Highlights
   
